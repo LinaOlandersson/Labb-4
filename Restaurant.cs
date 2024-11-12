@@ -60,9 +60,15 @@
         // Prints out the next order in line
         public void ShowNextorder()
         {
-            Order nextOrder = Orders.Peek();
-            Console.WriteLine($"Nästa order i kön:");
-            nextOrder.PrintOrder();
+            if (Orders.TryPeek(out Order nextOrder))
+            {
+                Console.WriteLine($"Nästa order i kön:");
+                nextOrder.PrintOrder();
+            }
+            else
+            {
+                Console.WriteLine("Det finns inga väntande ordrar i kön just nu.");
+            }
         }
         // Prints out the number of orders in line
         public void ShowOrderCount()
